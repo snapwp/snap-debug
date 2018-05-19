@@ -1,6 +1,6 @@
 {
     "name": "snapwp/snap-whoops",
-    "license": "GPL3",
+    "license": "GPL-3.0-or-later",
     "description": "Enable Whoops error handler for Snap",
     "authors": [
         {
