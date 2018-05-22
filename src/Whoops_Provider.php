@@ -31,6 +31,8 @@ class Whoops_Provider extends Provider
 
 			$whoops->register();
 
+			ob_start();
+
 			// Add to Service container.
 			Snap::Services()->addInstance($whoops);
 		}
