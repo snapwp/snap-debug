@@ -2,8 +2,8 @@
 
 namespace Snap\Whoops;
 
-use Snap\Core\Services\Provider;
 use Snap\Core\Snap;
+use Snap\Services\Provider;
 use Snap\Whoops\Handlers\Ajax;
 use Snap\Whoops\Handlers\General;
 use Snap\Whoops\Handlers\Rest_Api;
