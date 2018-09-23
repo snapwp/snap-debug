@@ -25,6 +25,8 @@ class Debug_Provider extends Provider
     {
         $this->add_config_location(\realpath(__DIR__ . '/../config'));
 
+        require_once __DIR__ . '/functions.php';
+
         if ($this->is_enabled()) {
             $this->init_whoops();
         }
