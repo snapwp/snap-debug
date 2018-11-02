@@ -2,7 +2,7 @@
 
 namespace Snap\Debug\Dumper;
 
-use Snap\Core\Snap;
+use Snap\Services\Config;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\CliDumper;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper;
@@ -81,7 +81,7 @@ class Handle
     {
         $flags = 0;
 
-        if (Snap::config('debug.dump_show_string_length')) {
+        if (Config::get('debug.dump_show_string_length')) {
             $flags = $flags | AbstractDumper::DUMP_STRING_LENGTH;
         }
 
@@ -92,7 +92,7 @@ class Handle
 
             $dumper->setStyles(self::get_styles());
 
-            if (Snap::config('debug.dump_include_trace')) {
+            if (Config::get('debug.dump_include_trace')) {
                 $dumper->setDumpBoundaries(
                     '<pre class=sf-dump id=%s data-indent-pad="%s">' . self::additional_output(),
                     '</pre><script>Sfdump(%s)</script>'
@@ -116,7 +116,7 @@ class Handle
      */
     private static function get_styles()
     {
-        $style = Snap::config('debug.dump_set_style', 'snap');
+        $style = Config::get('debug.dump_set_style', 'snap');
 
         if (\is_array($style)) {
             return $style;
