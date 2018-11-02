@@ -26,6 +26,8 @@ class Debug_Hook
      * @since  1.0.0
      *
      * @param  string $hook The hook to find callbacks for.
+     *
+     * @throws \ReflectionException If something has gone terribly wrong.
      */
     public function __construct($hook = '')
     {
@@ -34,7 +36,7 @@ class Debug_Hook
         $this->data = [];
 
         if (! \is_string($hook) || ! isset($wp_filter[ $hook ]) || empty($wp_filter[ $hook ]->callbacks)) {
-            return $this->data;
+            return;
         }
 
         foreach ($wp_filter[ $hook ]->callbacks as $priority => $callbacks) {
