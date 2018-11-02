@@ -2,8 +2,9 @@
 
 namespace Snap\Debug;
 
-use Snap\Core\Snap;
-use Snap\Services\Provider;
+use Snap\Services\Config;
+use Snap\Services\Container;
+use Snap\Services\Service_Provider;
 use Snap\Debug\Dumper\Handle;
 use Snap\Debug\Handlers\Ajax;
 use Snap\Debug\Handlers\General;
@@ -14,7 +15,7 @@ use Whoops\Run;
 /**
  * Snap Debug service provider.
  */
-class Debug_Provider extends Provider
+class Debug_Service_Provider extends Service_Provider
 {
     /**
      * Register the Service.
@@ -65,7 +66,7 @@ class Debug_Provider extends Provider
         \ob_start();
 
         // Add to Service container.
-        Snap::Services()->addInstance($whoops);
+        Container::add_instance($whoops);
     }
 
     /**
@@ -105,6 +106,6 @@ class Debug_Provider extends Provider
             return false;
         }
 
-        return Snap::config('debug.enable_whoops');
+        return Config::get('debug.enable_whoops');
     }
 }
