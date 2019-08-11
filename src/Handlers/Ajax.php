@@ -15,13 +15,11 @@ class Ajax extends JsonResponseHandler
     /**
      * The error handler. Send the error is the standard WordPress AJAX format.
      *
-     * @since 1.0.0
-     *
      * @return int
      */
     public function handle()
     {
-        if (! $this->is_ajax_request()) {
+        if (! $this->isAjaxRequest()) {
             return Handler::DONE;
         }
 
@@ -42,11 +40,9 @@ class Ajax extends JsonResponseHandler
     /**
      * Whether the current request is admin-ajax or not.
      *
-     * @since 1.0.0
-     *
      * @return bool
      */
-    private function is_ajax_request()
+    private function isAjaxRequest()
     {
         return \defined('DOING_AJAX') && DOING_AJAX;
     }
