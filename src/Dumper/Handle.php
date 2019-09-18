@@ -16,7 +16,6 @@ class Handle
     /**
      * The css for the dumper color schemes.
      *
-     * @since  1.0.0
      * @var array
      */
     static private $schemes = [
@@ -73,8 +72,6 @@ class Handle
     /**
      * The dump replacement.
      *
-     * @since  1.0.0
-     *
      * @param  mixed $var The var to dump.
      */
     public static function dump($var)
@@ -90,11 +87,11 @@ class Handle
         if (! \in_array(\PHP_SAPI, array('cli', 'phpdbg'), true)) {
             $dumper = new HtmlDumper(null, null, $flags);
 
-            $dumper->setStyles(self::get_styles());
+            $dumper->setStyles(self::getStyles());
 
             if (Config::get('debug.dump_include_trace')) {
                 $dumper->setDumpBoundaries(
-                    '<pre class=sf-dump id=%s data-indent-pad="%s">' . self::additional_output(),
+                    '<pre class=sf-dump id=%s data-indent-pad="%s">' . self::additionalOutput(),
                     '</pre><script>Sfdump(%s)</script>'
                 );
             }
@@ -110,11 +107,9 @@ class Handle
      *
      * Can be overwritten by setting the config key.
      *
-     * @since  1.0.0
-     *
      * @return array
      */
-    private static function get_styles()
+    private static function getStyles()
     {
         $style = Config::get('debug.dump_set_style', 'snap');
 
@@ -132,11 +127,9 @@ class Handle
     /**
      * Gets the line and file of where the dump was called.
      *
-     * @since 1.0.0
-     *
      * @return string The HTML for showing the line info.
      */
-    private static function additional_output()
+    private static function additionalOutput()
     {
         $backtrace = \debug_backtrace()[3];
 
